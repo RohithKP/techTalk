@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Registration</title>
+  <link rel="stylesheet" type="text/css" href="css/style.css">
+  <link rel="stylesheet" type="text/css" href="css/registration_form.css">
+  <link href='https://fonts.googleapis.com/css?family=Roboto:400,300,400italic,300italic,700' rel='stylesheet' type='text/css'>
+  <script type="text/javascript" src="js/main.js"></script>
+</head>
+
+<body onload="document.registration.userid.focus();">
+  <div id="header">
+    <div id="logo_div"> 
+    <h1><a href="/" id="logo"><b>Tech Talk</b></a></h1>
+    </div>
+    <div id="nav_div">
+    <ul id="nav">
+    <li id="nav-home"><a href="home.html">Home</a></li>
+    <li id="nav-about"><a href="#">About</a></li>
+    <li id="nav-registration"><a href="registration.html">Registration</a></li>
+    <li id="nav-contact"><a href="#">Contact</a></li>
+    </ul>
+    </div>
+  </div>
+
+<main>
+<div id="form_div">
+<form name='registration' onSubmit="return formValidation();">  
+<label for="userid">User id:</label>
+<input type="text" name="userid" placeholder="User ID" /><br>
+
+<label for="passid">Password:</label>
+<input type="password" name="passid" placeholder="Password" /><br>
+
+<label for="username">Name:</label>
+<input type="text" name="username"  placeholder="Name"/><br>
+
+<label for="address">Address:</label>
+<input type="text" name="address" placeholder="Enter your address" /><br>
+
+<label for="country">Country:</label>
+<select name="country">  
+<option selected="" value="Default">(Please select a country)</option>  
+<option value="AF">Australia</option>  
+<option value="AL">Canada</option>  
+<option value="DZ">India</option>  
+<option value="AS">Russia</option>  
+<option value="AD">USA</option>  
+</select><br>
+
+<label for="zip">ZIP Code:</label>
+<input type="text" name="zip" placeholder="Zip Code"/><br>
+
+<label for="email">Email:</label>
+<input type="text" name="email"  placeholder="Email"/><br>
+
+<label id="gender">Sex:</label>
+<input type="radio" id="male" name="sex" value="Male" /><span>Male</span>
+<input type="radio" id="female" name="sex" value="Female" /><span>Female</span><br>
+
+<label>Language:</label>
+<input type="checkbox" id="en" name="lang" value="en" /><span>English</span>
+<input type="checkbox" id="noen" name="lang" value="noen" /><span>Non English</span><br>
+
+<label for="desc">About:</label>
+<textarea name="desc" id="desc" ></textarea><br>
+
+<button type="submit" name="submit" id="submit">Submit</button>
+<div id="message"></div>
+</form> 
+</div>
+</main>
+
+  <footer>
+    ©Copyright 2050 by TechTalk.com. All rights reserved.
+  </footer>
+</body>
+</html>
