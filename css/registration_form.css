@@ -9,8 +9,18 @@ margin: 0 auto;
 #form_div input{
 height: 25px;	
 margin:3px 0;
+border: 1px solid #ccc;
+padding-left: 5px;
 }
 
+#form_div textarea{
+border: 1px solid #ccc;
+}
+
+#form_div textarea:focus,#form_div input:focus{
+
+border-color: green;
+}
 label{
 float: left;  
 clear: left;  
@@ -37,8 +47,12 @@ box-shadow: 0px 1px 1px #666;
 }
 
 #message{
- font-size:12px;
+ font-size:10px;
 color: #FF6600;
+}
+
+input .error{
+border: 2px solid red;
 }
 
 @media only screen and (max-width: 590px) {

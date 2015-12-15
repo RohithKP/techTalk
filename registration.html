@@ -29,8 +29,8 @@
 <div id="form_div">
 <form name='registration' onSubmit="return formValidation();">  
 <label for="userid">User id:</label>
-<input type="text" name="userid" placeholder="User ID" /><br>
-
+<input class="error" type="text" name="userid" placeholder="User ID" /><br>
+<div id="userid_message"></div>
 <label for="passid">Password:</label>
 <input type="password" name="passid" placeholder="Password" /><br>
 
@@ -51,7 +51,7 @@
 </select><br>
 
 <label for="zip">ZIP Code:</label>
-<input type="text" name="zip" placeholder="Zip Code"/><br>
+<input type="text" name="zip" placeholder="Zip Code" onkeypress="return numbersonly(event)"/><br>
 
 <label for="email">Email:</label>
 <input type="text" name="email"  placeholder="Email"/><br>
