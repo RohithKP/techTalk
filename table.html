@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Table</title>
+<style type="text/css">
+.headerSortDown:after,
+.headerSortUp:after{
+    content: ' ';
+    position: relative;
+    left: 10px;
+    border: 7px solid transparent;
+}
+.headerSortDown:after{
+    top: 10px;
+    border-top-color: silver;
+}
+.headerSortUp:after{
+    bottom: 15px;
+    border-bottom-color: silver;
+}
+.headerSortDown,
+.headerSortUp{
+    padding-left: 20px;
+}
+</style>
+</head>
+<body>
+    <input id="search_field"/>
+    <button onclick="search();">Search</button><br>
+    <table id="POITable" border="1" style="width:100%">
+        <tr>
+            <td>EmpId</td>
+            <td>Name</td>
+            <td>Department</td>
+            <td>Category</td>
+            <td>National</td>
+            <td>date</td>
+        </tr>
+    </table>
+    <button onclick="createTable(emp_array);">Create Table</button><br>
+    <script type="text/javascript">
+        a = [];
+
+		var emp_array = [
+		  {
+		    "EmpId": "0001",
+		    "Name": "Sam Wills",
+		    "Department": "Human Resource",
+		    "Category": "Executive",
+		    "National": "USA",
+		    "date"    : "13-01-2011"
+		  },
+		  {
+		    "EmpId": "0002",
+		    "Name": "Ish Thalagala",
+		    "Department": "IT Admin",
+		    "Category": "NON Executive",
+		    "National": "Sri Lanka",
+		    "date"    : "12-02-2015"
+		  },
+		 {
+		    "EmpId": "0003",
+		    "Name": "Sandy Hudson",
+		    "Department": "Human Resource",
+		    "Category": "Executive",
+		    "National": "India",
+		    "date"    : "13-01-2012"
+
+		  }
+		,
+		 {
+		    "EmpId": "0004",
+		    "Name": "Kamal Jhone",
+		    "Department": "Human Resource",
+		    "Category": "NON Executive",
+		    "National": "Lanka",
+		    "date"    : "13-01-2013"
+		  }
+		] ;
+
+//Create Table
+        function  createTable(emp_array){
+        	var table=document.getElementById('POITable');
+        	    	console.log(table.rows.length);
+        	    	len  = table.rows.length;
+				    for (var nx = 1; nx <len; nx++)
+				    {
+        	    	row = document.getElementById(nx);
+		            deleteRow(row);
+		            } 
+		        for (i in emp_array){
+		             insRow(emp_array[i].EmpId,emp_array[i].Name,emp_array[i].Department,emp_array[i].Category,emp_array[i].National,emp_array[i].date);
+		        }
+        }
+
+		function insRow(empid,name,department,category,national,date)
+		{
+		    var x=document.getElementById('POITable');
+		    var new_row = x.rows[0].cloneNode(true);
+
+		    new_row.id =x.rows.length;
+		    new_row.cells[0].innerHTML = empid;
+		    new_row.cells[1].innerHTML = name;
+		    new_row.cells[2].innerHTML = department;
+		    new_row.cells[3].innerHTML = category;
+		    new_row.cells[4].innerHTML = national;
+		    new_row.cells[5].innerHTML = date;
+
+		    for(i=0;i<new_row.cells.length;i++){
+			  new_row.cells[i].setAttribute("class", "");
+              }
+		    x.appendChild( new_row );
+		}
+
+        function deleteRow(row)
+		{
+		    var i=row.rowIndex;
+		    document.getElementById('POITable').deleteRow(i);
+		}
+
+//Sort
+        function sortRow(el,field, primer)
+        {
+          for(i=0; i< td.length;i++)
+          {
+          	td[i].setAttribute("class", "");
+          }
+          if(a[0]){
+           r_array  = a ; 
+           }else{
+           	r_array = emp_array;
+           }	
+          r_array.sort(sort_by(el,field, primer)); 	
+          console.log(r_array);
+          createTable(r_array);
+        }
+
+        b= -1;
+        r= 1;
+
+		var sort_by = function(el,field, primer){
+		   var key = primer ? 
+		       function(x) {return primer(x[field])} : 
+		       function(x) {return x[field]};
+ 
+		   // reverse = !reverse ? 1 : -1;
+           r = r*b;
+           if(r == 1)
+           {
+           	  el.classList.remove("headerSortDown");
+             el.classList.add("headerSortUp");
+           }
+           else{
+           	  el.classList.add("headerSortDown");
+             el.classList.remove("headerSortUp");
+           }
+           console.log(r);
+		   return function (a, b) {
+		       return a = key(a), b = key(b), r * ((a > b) - (b > a));
+		     } 
+		}
+
+        function upper(a){return a.toUpperCase()};
+
+        function dateString(d){
+           return new Date( d.replace( /(\d{2})-(\d{2})-(\d{4})/, "$2/$1/$3") );
+        };
+
+
+        var tr     = document.getElementsByTagName("tr");
+        var td     = tr[0].getElementsByTagName("td");
+
+		for ( var i = 0; i< td.length; i++ ) 
+		{   
+		    td[i].addEventListener("click", function() {
+		    	key = this.innerHTML;
+		    	if(key == "EmpId"){
+		        sortRow(this,key,parseInt);
+		        }
+		        else if(key == "Name" || key == "Department" || key == "Category" || key == "National"){
+                sortRow(this,key,upper);
+		        }
+		        else if(key == "date"){
+                sortRow(this,key,dateString);
+		        }
+		    }, false);
+		}
+
+
+//Search
+          
+        function getPropertyByRegex(obj,propName) {
+			       var helloRE = new RegExp("^" + propName.toUpperCase()),
+			           key;
+			           console.log(helloRE);
+			       for (key in obj)
+			          {
+			          // console.log(obj[key]);
+			          if (helloRE.test(obj[key].toUpperCase()))
+			          	    {
+			          	    console.log(obj[key]);
+			                 return obj;
+			          	    }
+			          }   
+			       return null; // put your default "not found" return here
+			    }
+        
+
+        function search(){
+         a = [];	
+         var str = document.getElementById("search_field").value;		
+         for(j in emp_array){
+               user_json = getPropertyByRegex(emp_array[j], str);
+               if(user_json)
+               {
+               	a.push(user_json);
+               }
+            }
+            createTable(a);
+            console.log(a);
+           //createTable(emp_array);
+        }
+    </script>
+</body>
+</html>	
