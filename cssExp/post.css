@@ -31,6 +31,12 @@ body{
 	background-color: #999;
 	margin: 0 5px 5px 0;
 }
+.card_header_title{
+	float: left;
+}
+.card_header_tools{
+	float: right;
+}
 .equal_divs{
 	box-sizing:border-box;
 	background-color: #C0C0C0;
@@ -41,8 +47,9 @@ body{
 	height: 35px;
 	color: #595959;
 	border-right: 1px solid #E3E3E3;
+	cursor: hand;
+	cursor: pointer;
 }
 .post_wrapper{
 width: 400px;
-border-radius: 10px;
 }
