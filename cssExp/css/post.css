@@ -7,9 +7,7 @@ body{
 #card{
 	padding:10px;
 	background-color: #EDEDED;
-	-moz-box-shadow: 0 0 3px #ccc;
--webkit-box-shadow: 0 0 3px #ccc;
-box-shadow: 0 0 3px #ccc;
+
 }
 .card_content{
 	box-sizing:border-box;
@@ -62,12 +60,17 @@ box-shadow: 0 0 3px #ccc;
 	background-color: #999999;
 }
 .card_foot_share.equal_divs{
+	float: right;
 	border-right: none;
 }
+
 .post_wrapper{
 width: 400px;
 position: relative;
 margin: 10% auto;
+	-moz-box-shadow: 0px 0px 4px #8B8C8C;
+-webkit-box-shadow: 0px 0px 4px #8B8C8C;
+box-shadow: 0px 0px 4px #8B8C8C;
 }
 .fa-angle-down{
 	cursor: pointer;
