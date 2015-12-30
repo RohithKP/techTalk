@@ -23,15 +23,15 @@
                         </ul>
                     </div>
                 </div>
-                <div id="card_content" class="card_content">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                <div id="card_content" class="card_content comment more">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
                     tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
                     quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
                     consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
                     cillum dolore  eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
                     proident,  sunt in culpa qui officia deserunt mollit anim id est laborum.
                     Lorem ips um dolor sit amet, consectetur adipisicing elit. Reiciendis ab cumque, velit placeat vero nostrum eum, voluptas earum vitae omnis voluptatum quas praesentium facere tempora recusandae maiores, provident incidunt illosasdas
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ullam dolore laudantium aliquam rerum excepturi dolores assumenda id in quod blanditiis dignissimos facere quisquam itaque, veniam fugit? Fuga atque provident minima?!</p>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ullam dolore laudantium aliquam rerum excepturi dolores assumenda id in quod blanditiis dignissimos facere quisquam itaque, veniam fugit? Fuga atque provident minima?!
                 </div>
                 <div id="count" class="small_gtext">
                     <span>21&nbsp;Likes&nbsp;&nbsp;</span>
@@ -46,19 +46,52 @@
             </div>
         </div>
         <script type="text/javascript">
-        var p=$('#card_content p');
-        var divh=$('#card_content').height();
-        while ($(p).outerHeight()>divh) {
-        function repl() {
-                return p.text().replace(/\W*\s(\S)*$/, '...');
-            }
-            var new_txt = repl();
-        console.log(new_txt);
-            $(p).text(new_txt);
-        }
+   //      var p=$('#card_content p');
+   //      var divh=$('#card_content').height();
+   //      while ($(p).outerHeight()>divh) {
+   //      function repl() {
+   //              return p.text().replace(/\W*\s(\S)*$/, '...');
+   //          }
+   //          var new_txt = repl();
+   //      console.log(new_txt);
+   //          $(p).text(new_txt);
+   //      }
         $( ".card_header_tools" ).click(function() {
 			$(".wrapper-dropdown-2").toggleClass('active');
 			});
+$(document).ready(function() {
+	var showChar = 100;
+	var ellipsestext = "...";
+	var moretext = "more";
+	var lesstext = "less";
+	$('.more').each(function() {
+		var content = $(this).html();
+
+		if(content.length > showChar) {
+
+			var c = content.substr(0, showChar);
+			var h = content.substr(showChar-1, content.length - showChar);
+           console.log(h);
+			var html = c + '<span class="moreelipses">'+ellipsestext+'</span>&nbsp;<span class="morecontent"><span>' + h + '</span>&nbsp;&nbsp;<a href="" class="morelink">'+moretext+'</a></span>';
+
+			$(this).html(html);
+		}
+
+	});
+
+	$(".morelink").click(function(){
+		if($(this).hasClass("less")) {
+			$(this).removeClass("less");
+			$(this).html(moretext);
+		} else {
+			$(this).addClass("less");
+			$(this).html(lesstext);
+		}
+		$(this).parent().prev().toggle();
+		$(this).prev().toggle();
+		return false;
+	});
+});
         </script>
     </body>
 </html>
