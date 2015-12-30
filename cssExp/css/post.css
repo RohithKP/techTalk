@@ -21,6 +21,7 @@ body{
     text-align:justify;
     /*height: 160px;*/
     width: 100%;
+    font-size: 13px;
     overflow: hidden;
 }
 .small_gtext{
@@ -34,6 +35,8 @@ body{
 
 .hover_effect:hover{
 color: #333;
+cursor: pointer;
+cursor: hand;
 }
 .card_header_image{
 	float: left;
