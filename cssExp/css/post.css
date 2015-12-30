@@ -7,7 +7,9 @@ body{
 #card{
 	padding:10px;
 	background-color: #EDEDED;
-
+}
+.card_header{
+	overflow: auto;
 }
 .card_content{
 	box-sizing:border-box;
@@ -28,6 +30,10 @@ body{
 }
 .block_span{
 	display: block;
+}
+
+.hover_effect:hover{
+color: #333;
 }
 .card_header_image{
 	float: left;
@@ -75,6 +81,9 @@ box-shadow: 0px 0px 4px #8B8C8C;
 }
 .fa-angle-down{
 	cursor: pointer;
+	color: #999;
+	font-size: 18px;
+	 text-shadow: 1px 1px 1px #ccc;
 }
 
 
