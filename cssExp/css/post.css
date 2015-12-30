@@ -7,6 +7,9 @@ body{
 #card{
 	padding:10px;
 	background-color: #EDEDED;
+	-moz-box-shadow: 0 0 3px #ccc;
+-webkit-box-shadow: 0 0 3px #ccc;
+box-shadow: 0 0 3px #ccc;
 }
 .card_content{
 	box-sizing:border-box;
@@ -58,9 +61,13 @@ body{
 .equal_divs:hover{
 	background-color: #999999;
 }
+.card_foot_share.equal_divs{
+	border-right: none;
+}
 .post_wrapper{
 width: 400px;
 position: relative;
+margin: 10% auto;
 }
 .fa-angle-down{
 	cursor: pointer;
