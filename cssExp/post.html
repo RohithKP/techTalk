@@ -57,8 +57,16 @@
    //      console.log(new_txt);
    //          $(p).text(new_txt);
    //      }
+
+
         $( ".card_header_tools" ).click(function() {
+
 			$(".wrapper-dropdown-2").toggleClass('active');
+			   timers = setTimeout(function() {
+				console.log("dada");
+			 $(".wrapper-dropdown-2").removeClass('active');
+			   clearTimeout(timers);
+			}, 2000);
 			});
 $(document).ready(function() {
 	var showChar = 150;
@@ -93,6 +101,8 @@ $(document).ready(function() {
 		return false;
 	});
 });
+
+
         </script>
     </body>
 </html>

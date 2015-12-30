@@ -130,6 +130,7 @@ box-shadow: 0px 0px 4px #8B8C8C;
  
 .wrapper-dropdown-2 .dropdown li:hover a{
     color:#333;
+    background-color:#999;
 }
 
 .wrapper-dropdown-2.active .dropdown {
