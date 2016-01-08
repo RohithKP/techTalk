@@ -2,6 +2,8 @@ body{
 	margin: 0;
 	font-family: sans-serif;
 	font-size: 14px;
+	     height:100%;
+     padding:0;
 }
 
 #card{
@@ -45,10 +47,11 @@ cursor: hand;
 	background-color: #999;
 	margin: 0 5px 5px 5px;
 	overflow: hidden;
+
 }
-.card_image_height{
+/* .card_image{
 	height: inherit;
-}
+} */
 .card_header_title{
 	float: left;
 	margin-left: 5px;
@@ -63,10 +66,12 @@ cursor: hand;
 	margin: 5px -18px 5px -18px;
 	height: 235px;
 	background-color: #999999;
-		-moz-box-shadow: 0px 0px 5px #8B8C8C;
+-moz-box-shadow: 0px 0px 5px #8B8C8C;
 -webkit-box-shadow: 0px 0px 5px #8B8C8C;
 box-shadow: 0px 0px 5px #8B8C8C;
 overflow: hidden;
+	background-image: url("../images/Antarctica.jpg");
+	background-size: contain;
 }
 .equal_divs{
 	box-sizing:border-box;
@@ -152,3 +157,4 @@ a.morelink {
 .morecontent span {
 	display: none;
 }
+

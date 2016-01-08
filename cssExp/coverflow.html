@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Css CoverFlow</title>
+
+<style type="text/css">
+body{
+margin:0;
+padding: 0;
+}
+#coverflow{
+	position: relative;
+	height: 250px;
+	width: 600px;
+	margin: 0 auto;
+	margin-top: 150px;
+	perspective:500px;
+	 transform-style: preserve-3d;
+	 	perspective-origin: 50% 50%;
+
+}
+img{
+	position: absolute;
+	height: 250px;
+	width: 250px;
+	top: 0;
+	left:0;
+}
+.left{
+transform:rotateY(30deg);
+}
+.right{
+transform:translateX(300px) rotateY(-30deg);
+}
+.center{
+    -webkit-transform: translate3d(150px, 0, 100px);
+    -o-transform: translate3d(150px, 0, 100px);
+    -ms-transform: translate3d(150px, 0, 100px);
+        -moz-transform: translate3d(150px, 0, 100px);
+    transform: translate3d(150px, 0, 100px);
+/*z-index: 3;*/
+}
+</style>	
+</head>
+<body>
+<div id="coverflow">
+<img src="./images/index.jpeg" class="img left">
+	<img src="./images/one.jpg" class="img center">
+	<img src="./images/on-top-of-earth.jpg" class="img right">
+</div>
+</body>
+</html>
