@@ -1,0 +1,320 @@
+*{
+	box-sizing:border-box;
+}
+body{
+padding: 0;
+margin: 0;	
+color: #999;
+font-family: 'Asap';
+font-weight: 400;
+}
+h1,h2,h3,h4,h5,h6{
+		margin: 0;
+	padding: 0;
+}
+header{
+	background-color: #f4f4f4;
+	height: 80px;
+	position: fixed;
+	left: 0;
+	right: 0;
+	top: 0;
+	z-index: 3;
+}
+header span{
+    padding: 26px 0;
+	display: inline-block;
+	width: 33.3%;
+	text-align: center;
+	float: left;
+}
+.big-text{
+	font-family: 'Asap Bold';
+	line-height: 1.2em;
+	font-size: 52px;
+}
+.small_text{	
+font-weight: 400;
+    font-size: 20px;
+    line-height: 1.5em;
+}
+#logo{
+
+}
+#navigation{
+font-family: 'Asap Bold';
+text-align: left;
+}
+.container{
+ width: 100%;
+	max-width: 1366;
+}
+#navigation>ul{
+	padding: 0;
+	margin: 0;
+	display: inline-block;
+	margin-top: 6px;
+}
+#navigation li{
+	list-style: none;
+	display: inline-block;
+}
+#navigation li:first-child{
+	margin-right: 20px;
+}
+li a{
+	color: #999;
+	text-decoration: none;
+	font-size: 18px;
+}
+
+li a.active{
+	color: #333;
+}
+#social_icons{
+	text-align: right;
+}
+#social_icons li:first-child{
+	margin-right: 10px;
+}
+#social_icons>ul{
+	padding:0;
+	margin:0;
+	margin-top: -5px;
+}
+#social_icons>ul>li{
+	list-style: none;
+ display: inline-block;
+}
+li.facebook-icon{
+	height: 40px;
+	width: 40px;
+background: url('../images/fb-icon.png') no-repeat 0 0;
+}
+li.twitter-icon{
+	height: 40px;
+	width: 40px;
+	background: url('../images/tweet-icon.png') no-repeat 0 0;
+}
+.banner{
+	position: relative;
+	clear:both;
+	background-color: #999;
+	padding-top: 90px;
+	background: url('../images/bg1_repeat.png') repeat 0 0;
+	color: #f4f4f4;
+}
+.banner_content{
+	max-width: 640px;
+	margin: 0px auto;
+	text-align: center;
+	padding:70px 0 ; 
+}
+.banner_content span{
+	display: block;
+}
+.banner_content span{
+	margin-bottom: 40px;
+}
+#scroll-button{
+	text-align: center;
+}
+#scroll-button img{
+	position: relative;
+	top: 4px;
+}
+section{
+height: auto;
+padding-top: 90px;
+}
+.content{
+		margin: 0 auto;
+	width: 87%;
+	    padding-bottom: 100px;
+}
+.heading{
+padding: 20px 0;
+font-size: 36px;
+color: #333;
+}
+.sub-heading{
+	color: #A5A5A5;
+	font-size: 20px;
+	line-height: 1.5em;
+	text-align: center;
+}
+.col-lg-6{
+display: inline-block;
+width: 49.5%;
+text-align: center;
+}
+#section1{
+	text-align: center;
+}
+.description{
+	max-width: 512px;
+	margin: 0 auto;
+}
+/*.sec-img{
+
+	height: 400px;
+	background:url("../images/feed_bg.png")  no-repeat center;
+	border-image-repeat: repeat;
+}*/
+.sec-img{
+	width: 100%;
+}
+#section2{
+
+}
+#section3{
+
+}
+
+.row {
+  display: table;
+}
+
+.col {
+  display: table-cell;
+  width: 48%; /* depends on the number of columns */
+ vertical-align: middle;
+}
+
+.seperator{
+	display: table-cell;
+	width: 4%;
+	vertical-align: middle;
+}
+
+.right{
+	float: right;
+}
+
+.left{
+	float: left;
+}
+#subscribe_bottom{
+	/*min-height: 312px;*/
+	background: url('../images/bg2.png') no-repeat 0 0;
+}
+#signup_field{
+	max-width:850px;
+	margin:0px auto; 
+	padding: 90px 0;
+}
+#subscribe_bottom span{
+	display: block;
+	color: #fff;
+}
+
+#signup_field>span{
+	margin-bottom: 40px;
+}
+#banner_bottom{
+	/*min-height: 312px;*/
+	background-color: #333;
+}
+
+.sign-up-email{
+border-radius: 35px 0px 0 35px !important;
+    background-color: #ee8277;
+    color: #fff;
+    width: 268px;
+    height: 60px;
+    padding-left: 45px!important;
+    padding-top: 8px;
+    padding-bottom: 9px;
+    border:0;
+    float: left;
+    	font-size: 20px;
+}
+
+.sign-up-submit{
+	    border-radius: 0px 35px 35px 0px !important;
+    background-color: #2ecc71;
+    background-image: none;
+    width: 81px;
+    height: 60px;
+    max-height: none;
+	border:0;
+	float: left;
+	font-size: 20px;
+	color: #fff;
+}
+
+footer{
+	clear: both;
+	background-color: #fff;
+	text-align: center;
+	height: 60px;
+	padding-top:20px; 
+}
+.button-wrap{
+/*	position: absolute;
+	left: 42px;*/
+	overflow: auto;
+	max-width: 380px;
+	margin:0 auto;
+
+
+}
+.sign-up-button{
+	/*position: relative;*/
+	max-width: 350px;
+	margin:5px auto 0px;
+	color: #fff;
+
+}
+.sign-up-button span{
+	margin-bottom: 20px;
+}
+.txt_margin{
+	margin: 0 80px;
+}
+.x-small-txt{
+	font-size: 13px;
+	font-weight: 400;
+	padding-top: 8px;
+}
+#banner-container{
+	max-width: 605px;
+	margin: 0 auto;
+	overflow: auto;
+}
+#banner-wrap{
+	overflow: auto;
+	    margin-top: 25px;
+}
+#banner-wrap img{
+	float: left;
+	width: 160px;
+}
+#banner-wrap span {
+	 color: #fff;
+	float: left;
+	    font-weight: 700;
+    font-size: 34px;
+    margin-top: 55px;
+    margin-left: -45px;
+}
+
+ .col img{
+ 	width: 100%;
+ }
+@media screen and (min-width:950px) {
+ .col img{
+ 	width: auto;
+ }
+}
+@media screen and (min-width:768px) {
+ #banner-wrap img{
+	width: auto;
+}
+#banner-wrap span{
+    font-size: 48px;
+    margin-top: 95px;
+    margin-left: -69px;
+}
+
+}
