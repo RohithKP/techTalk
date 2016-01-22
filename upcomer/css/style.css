@@ -8,6 +8,9 @@ color: #999;
 font-family: 'Asap';
 font-weight: 400;
 }
+input{
+	outline: none;
+}
 h1,h2,h3,h4,h5,h6{
 		margin: 0;
 	padding: 0;
@@ -125,7 +128,7 @@ li.twitter-icon{
 }
 section{
 height: auto;
-padding-top: 90px;
+padding-top: 50px;
 }
 .content{
 		margin: 0 auto;
@@ -142,6 +145,7 @@ color: #333;
 	font-size: 20px;
 	line-height: 1.5em;
 	text-align: center;
+	width:87%;
 }
 .col-lg-6{
 display: inline-block;
@@ -214,23 +218,27 @@ text-align: center;
 #banner_bottom{
 	/*min-height: 312px;*/
 	background-color: #333;
+	overflow: auto;
 }
 
 .sign-up-email{
-border-radius: 35px 0px 0 35px !important;
+border-radius: 35px !important;
     background-color: #ee8277;
     color: #fff;
-    width: 268px;
+    width: 100%;
     height: 60px;
     padding-left: 45px!important;
     padding-top: 8px;
     padding-bottom: 9px;
+    padding-right: 90px;
     border:0;
     float: left;
     	font-size: 20px;
 }
 
 .sign-up-submit{
+	position: absolute;
+	right: 0;
 	    border-radius: 0px 35px 35px 0px !important;
     background-color: #2ecc71;
     background-image: none;
@@ -251,8 +259,8 @@ footer{
 	padding-top:20px; 
 }
 .button-wrap{
-/*	position: absolute;
-	left: 42px;*/
+	position: relative;
+	/*left: 42px;*/
 	overflow: auto;
 	max-width: 380px;
 	margin:0 auto;
@@ -261,7 +269,7 @@ footer{
 }
 .sign-up-button{
 	/*position: relative;*/
-	max-width: 350px;
+	/*max-width: 350px;*/
 	margin:5px auto 0px;
 	color: #fff;
 
@@ -278,17 +286,20 @@ footer{
 	padding-top: 8px;
 }
 #banner-container{
-	max-width: 605px;
 	margin: 0 auto;
-	overflow: auto;
+	/*overflow: auto;*/
+	width: 87%;
 }
 #banner-wrap{
-	overflow: auto;
-	    margin-top: 25px;
+	/*overflow: auto;*/
+	    max-width: 605px;
+	    margin:25px auto 0 auto;
+	    width: 420px;
 }
 #banner-wrap img{
 	float: left;
-	width: 160px;
+	width: 150px;
+    /*margin-left: 50px;*/
 }
 #banner-wrap span {
 	 color: #fff;
@@ -296,9 +307,11 @@ footer{
 	    font-weight: 700;
     font-size: 34px;
     margin-top: 55px;
-    margin-left: -45px;
+    margin-left: -55px;
 }
-
+#social_icons>ul>li.hidden_about2{
+	display: none;	
+}
  .col img{
  	width: 100%;
  }
@@ -308,13 +321,128 @@ footer{
  }
 }
 @media screen and (min-width:768px) {
+#banner-wrap{
+	width:auto;
+
+}	
  #banner-wrap img{
 	width: auto;
+	margin-left: -100px;
 }
 #banner-wrap span{
     font-size: 48px;
     margin-top: 95px;
     margin-left: -69px;
+}
+
+}
+
+@media screen and (max-width:768px) {
+.button-wrap{
+	width: 80%;
+}
+ .banner_content{
+ 	width: 85%;
+ }
+ .big-text{
+ 	font-size: 38px;
+ }
+ .small_text{
+ 	font-size: 16px;
+ }
+  .sign-up-email{
+  	/*width: 85%;*/
+  	font-size: 16px;
+  }
+ .sign-up-email,.sign-up-submit{
+ 	height: 45px;	
+ }
+ .txt_margin{
+ 	margin: 0 20px;
+ }
+ .row{
+ 	display: block;
+ }
+ .col{
+ 	width: 100%;
+ 	display: block;
+ 	text-align: center;
+ }
+ .col.left-align,.col.right-align{
+ 	text-align: center;
+ }
+ .col img{
+ 	    float: none;
+ 	    width: 65%;
+ }
+ #section2{
+ 	position: relative;
+ }
+ #sec2-img{
+    padding-top: 160px;
+ }
+
+ #sec2-txt{
+ 	position: absolute;
+
+top:30px;
+ }
+
+.sub-heading{
+	width: 90%;
+	font-size: 16px;
+}
+#signup_field{
+	padding:80px 0 20px 0;
+}
+}
+
+.left-align{
+	text-align: left;
+}
+.right-align{
+	text-align: right;
+}
+
+
+@media screen and (max-width:480px) {
+	.button-wrap{
+	width: 100%;
+}
+	#logo>img{
+		width: 100%;
+		min-width: 80px;
+	}
+
+#social_icons>ul>li.hidden_about2{
+	font-family: 'Asap Bold';
+	display:block;
+	    margin-top: 10px;
+	    float: right;
+}
+#navigation .hidden_about1 {
+	display: none;
+}
+#social_icons>ul:first-child{
+	display: none;
+}
+.big-text {
+    font-size: 32px;
+}	
+.banner_content {
+    width: 90%;
+}
+#banner-wrap{
+	width: 100%;
+}
+ #banner-wrap img{
+	width: 90px;
+	/*margin-left: -100px;*/
+}
+#banner-wrap span{
+    margin-top: 30px;
+    margin-left: -31px;
+    font-size: 6vw;
 }
 
 }
