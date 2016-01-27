@@ -3,6 +3,8 @@ var scene;
 var renderer;
 var material;
 var texloader;
+
+
 init();
 animate();
 
@@ -18,11 +20,7 @@ function init(){
 
 console.log(tex);
 	var material = new THREE.MeshBasicMaterial(  {
-			specular: 0x444444,
 			map: tex,
-
-			normalScale: new THREE.Vector2( 1, 1 ),
-			shininess: 30,
 			transparent: true,
 			depthTest: true,
 			depthWrite: false,
@@ -34,21 +32,18 @@ console.log(tex);
 	cylinder.position.z = -20;
 	scene.add(cylinder);
 
-	   //  var light = new THREE.DirectionalLight( 0xffffff );
-    // light.position.set( 0, 1, 1 ).normalize();
-    // scene.add(light);
 
 	renderer = new THREE.WebGLRenderer();
 	renderer.setSize(window.innerWidth,window.innerHeight);
 	document.body.appendChild(renderer.domElement);
 
 	 window.addEventListener( 'resize', onWindowResize, false );
-	document.getElementById('upload').onchange = changeMaterial;
+
 	render();
 }
 
-function changeMaterial(){
-tex = texloader.load("img/"+this.value);
+function changeMaterial(x){
+tex = texloader.load(x);
 cylinder.material = new THREE.MeshBasicMaterial(  {map:tex});
 }
 
