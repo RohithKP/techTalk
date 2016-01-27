@@ -75,7 +75,7 @@ $(renderer.domElement).on('mousedown', function(e) {
             
         var deltaRotationQuaternion = new THREE.Quaternion()
             .setFromEuler(new THREE.Euler(
-                toRadians(deltaMove.y * 1),
+                0,
                 toRadians(deltaMove.x * 1),
                 0,
                 'XYZ'
