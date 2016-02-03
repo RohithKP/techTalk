@@ -14,7 +14,15 @@
 		</style>
 	</head>
 	<body>
-        <input/><button>Change</button>
+	<img height="50" width="50" src="img/one.jpg" onclick="changeFaceMaterial(this.src)">
+	<img height="50" width="50" src="img/two.jpg" onclick="changeFaceMaterial(this.src)">
+	<img height="50" width="50" src="img/three.jpg" onclick="changeFaceMaterial(this.src)">
+	<img height="50" width="50" src="img/four.jpg" onclick="changeFaceMaterial(this.src)">
+	<img height="50" width="50" src="img/five.jpg" onclick="changeFaceMaterial(this.src)">
+	<img height="50" width="50" src="img/six.jpg" onclick="changeFaceMaterial(this.src)">
+	<img height="50" width="50" src="img/seven.jpg" onclick="changeFaceMaterial(this.src)">
+	<img height="50" width="50" src="img/eight.jpg" onclick="changeFaceMaterial(this.src)">
+	<img height="50" width="50" src="img/nine.jpg" onclick="changeFaceMaterial(this.src)">
         <div id="wrapper"></div>
 		<script src="./threejs/build/three.min.js"></script>
 
@@ -25,16 +33,17 @@
 		<script src="./js/lib/TrackballControls.js"></script>
 
 		<script>
-
+          
 			var container, stats;
-
+            var targetList = [];
 			var camera, scene, renderer;
 
 			var cube, plane;
-
+         
 			var targetRotation = 0;
 			var targetRotationOnMouseDown = 0;
-
+            var mouse = {x:0 , y:0},INTERSECTED;
+            var projector = new THREE.Projector();
 			var mouseX = 0;
 			var mouseXOnMouseDown = 0;
 
@@ -47,8 +56,8 @@
 			function init() {
 			scene = new THREE.Scene();
 
-				container = document.createElement( 'div' );
-				document.getElementById('wrapper').appendChild( container );
+				container = document.getElementById('wrapper');
+								// .appendChild( container );
 
 				var info = document.createElement( 'div' );
 				info.style.position = 'absolute';
@@ -60,6 +69,7 @@
 
 			camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 1, 1000 * 100 );
 			camera.position.z =  500;
+
 			scene.add( camera );
 						 var controls = new THREE.OrbitControls( camera );
 	
@@ -114,6 +124,7 @@
 				// var material = new THREE.MeshBasicMaterial( { vertexColors: THREE.FaceColors, overdraw: 0.5 } );
 
 				cube = new THREE.Mesh( geometry, meshFaceMaterial );     
+				cube.lookAt(camera.position);
 				scene.add( cube );
 
 				// Plane
@@ -135,7 +146,7 @@
 				stats = new Stats();
 				stats.domElement.style.position = 'absolute';
 				stats.domElement.style.top = '0px';
-				container.appendChild( stats.domElement );
+				// container.appendChild( stats.domElement );
 
 				document.addEventListener( 'mousedown', onDocumentMouseDown, false );
 				document.addEventListener( 'touchstart', onDocumentTouchStart, false );
@@ -146,13 +157,15 @@
 				window.addEventListener( 'resize', onWindowResize, false );
 
 			}
-function changeFaceMaterial(i){
+
+function changeFaceMaterial(x){
     texture = texloader.load(
-			'img/one.jpg'
+			x||'img/one.jpg'
 		);
 	var newMaterial = new THREE.MeshPhongMaterial(  {
 			map: texture});
-	meshFaceMaterial.materials[i] =  newMaterial;
+	console.log(materialIndex);
+	meshFaceMaterial.materials[materialIndex] =  newMaterial;
 }
 
 
@@ -172,9 +185,9 @@ function changeFaceMaterial(i){
 
 			function onDocumentMouseDown( event ) {
 
-				event.preventDefault();
+				// event.preventDefault();
 
-				document.addEventListener( 'mousemove', onDocumentMouseMove, false );
+		document.addEventListener( 'mousemove', onDocumentMouseMove, false );
 				document.addEventListener( 'mouseup', onDocumentMouseUp, false );
 				document.addEventListener( 'mouseout', onDocumentMouseOut, false );
 
@@ -184,7 +197,15 @@ function changeFaceMaterial(i){
 			}
 
 			function onDocumentMouseMove( event ) {
-
+      		var ray = new THREE.Raycaster( camera.position, cube.position.clone().sub( camera.position ).normalize() );
+var intersects = ray.intersectObjects( scene.children );
+if(intersects[0]){	
+	// console.log(intersects[0].face.materialIndex);
+     window.materialIndex = intersects[0].face.materialIndex;
+}
+		
+      		mouse.x=(event.clientX/window.innerWidth)*2-1;
+      		mouse.y = -(event.clientY/window.innerHeight)*2+1;
 				mouseX = event.clientX - windowHalfX;
 
 				targetRotation = targetRotationOnMouseDown + ( mouseX - mouseXOnMouseDown ) * 0.02;
@@ -236,7 +257,6 @@ function changeFaceMaterial(i){
 			//
 
 			function animate() {
-
 				requestAnimationFrame( animate );
                    plane.rotation.y = cube.rotation.y += ( targetRotation - cube.rotation.y ) * 0.05;
 				render();
@@ -246,15 +266,15 @@ function changeFaceMaterial(i){
 			}
 
 			function render() {
-newZ = -(camera.position.x * Math.cos(5.49779)) - (camera.position.z * Math.sin(5.49779));
-newX = (camera.position.x * Math.cos(0.78)) + (camera.position.z * Math.sin(0.78));
+				newZ = -(camera.position.x * Math.cos(5.49779)) - (camera.position.z * Math.sin(5.49779));
+				newX = (camera.position.x * Math.cos(0.78)) + (camera.position.z * Math.sin(0.78));
 				renderer.render( scene, camera );
 			}
+// }
 
-var ray = new THREE.Raycaster( camera.position, cube.position.clone().sub( camera.position ).normalize() );
-
-var intersects = ray.intersectObjects( scene.children );
-// console.log(intersects[0]);
+// var ray = new THREE.Raycaster( camera.position, cube.position.clone().sub( camera.position ).normalize() );
+// var intersects = ray.intersectObjects( scene.children );
+ // console.log(intersects[0]);
 		</script>
 
 	</body>
