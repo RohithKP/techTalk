@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>three.js canvas - geometry - cube</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+		<style>
+			body {
+				font-family: Monospace;
+				background-color: #f0f0f0;
+				margin: 0px;
+				overflow: hidden;
+			}
+			#image-preview{
+				height: 500px;
+				position: absolute;
+				right: 50px;
+				left: 450px;
+				top: 100px;
+				background-color: #ccc;
+			}
+			#preview img{
+				width: 100%;
+			}
+		</style>
+	</head>
+	<body>
+
+        <div id="canvas"></div>
+        <div id="images">
+	<img height="50" width="50" src="img/one.jpg" onclick="changeFaceMaterial(this.src)">
+	<img height="50" width="50" src="img/two.jpg" onclick="changeFaceMaterial(this.src)">
+	<img height="50" width="50" src="img/three.jpg" onclick="changeFaceMaterial(this.src)">
+	<img height="50" width="50" src="img/four.jpg" onclick="changeFaceMaterial(this.src)">
+	<img height="50" width="50" src="img/five.jpg" onclick="changeFaceMaterial(this.src)">
+	<img height="50" width="50" src="img/six.jpg" onclick="changeFaceMaterial(this.src)">
+	<img height="50" width="50" src="img/seven.jpg" onclick="changeFaceMaterial(this.src)">
+	<img height="50" width="50" src="img/eight.jpg" onclick="changeFaceMaterial(this.src)">
+	<img height="50" width="50" src="img/nine.jpg" onclick="changeFaceMaterial(this.src)">
+        </div>
+        <div id="preview">  
+         <img id="image-preview" src="">      	
+        </div>
+		<script src="./threejs/build/three.min.js"></script>
+
+		<script src="./js/renderers/Projector.js"></script>
+		 <script src="./js/renderers/CanvasRenderer.js"></script>
+        <script src="https://dl.dropboxusercontent.com/u/3587259/Code/Threejs/OrbitControls.js"></script>
+		<script src="./js/lib/stats.min.js"></script>
+		<script src="./js/lib/TrackballControls.js"></script>
+
+		<script>
+          
+var images	 = ['img/one.jpg','img/two.jpg','img/three.jpg','img/four.jpg','img/five.jpg','img/six.jpg'],intersects=[];		
+var container, camera, scene, renderer, mesh,
+
+    mouse = { x: 0, y: 0 },
+    objects = [],
+    
+    count = 0,
+
+    CANVAS_WIDTH = 400,
+    CANVAS_HEIGHT = 600;
+
+// info
+info = document.createElement( 'div' );
+info.style.position = 'absolute';
+info.style.top = '30px';
+info.style.width = '100%';
+info.style.textAlign = 'center';
+info.style.color = '#f00';
+info.style.backgroundColor = 'transparent';
+info.style.zIndex = '1';
+info.style.fontFamily = 'Monospace';
+document.body.appendChild( info );
+
+container = document.getElementById( 'canvas' );
+document.body.appendChild( container );
+
+renderer = new THREE.CanvasRenderer();
+renderer.setSize( CANVAS_WIDTH, CANVAS_HEIGHT );
+container.appendChild( renderer.domElement );
+
+		scene = new THREE.Scene();
+
+		camera = new THREE.PerspectiveCamera( 50, CANVAS_WIDTH / CANVAS_HEIGHT, 1, 1000 );
+		camera.position.y = 150;
+		camera.position.z = 500;
+		camera.lookAt( scene.position );
+		
+
+
+         texloader = new THREE.TextureLoader();
+		 tex1 = texloader.load(
+			'img/one.jpg'
+		 );
+         tex2 = texloader.load(
+			'img/two.jpg'
+		 ); 
+		 tex3 = texloader.load(
+			'img/three.jpg'
+		 );         
+		 tex4 = texloader.load(
+			'img/four.jpg'
+		 );
+		 tex5 = texloader.load(
+			'img/five.jpg'
+		 );
+		 tex6 = texloader.load(
+			'img/six.jpg' 
+		 );
+
+		var material1 = new THREE.MeshPhongMaterial(  {
+			map: tex1});
+		var material2 = new THREE.MeshPhongMaterial(  {
+			map: tex2});
+		var material3 = new THREE.MeshPhongMaterial(  {
+			map: tex3});
+		var material4 = new THREE.MeshPhongMaterial(  {
+			map: tex4});
+		var material5 = new THREE.MeshPhongMaterial(  {
+			map: tex5});
+		var material6 = new THREE.MeshPhongMaterial(  {
+			map: tex6});
+
+	 materials = [material1, material2, material3, material4, material5, material6];		
+
+	meshFaceMaterial = new THREE.MeshFaceMaterial( materials );
+				var geometry = new THREE.BoxGeometry( 200, 200, 200 );
+
+				mesh = new THREE.Mesh( geometry, meshFaceMaterial );     
+ var controls = new THREE.OrbitControls( camera );
+scene.add( mesh );
+objects.push( mesh );
+
+// find intersections
+var vector = new THREE.Vector3();
+var raycaster = new THREE.Raycaster();
+
+// mouse listener
+document.addEventListener( 'mousedown', function( event ) {
+    
+    // For the following method to work correctly, set the canvas position *static*; margin > 0 and padding > 0 are OK
+    mouse.x = ( ( event.clientX - renderer.domElement.offsetLeft ) / renderer.domElement.width ) * 2 - 1;
+    mouse.y = - ( ( event.clientY - renderer.domElement.offsetTop ) / renderer.domElement.height ) * 2 + 1;
+
+    vector.set( mouse.x, mouse.y, 0.5 );
+    vector.unproject( camera );
+
+    raycaster.set( camera.position, vector.sub( camera.position ).normalize() );
+
+    intersects = raycaster.intersectObjects( objects );
+
+    if ( intersects.length > 0 ) {    
+        info.innerHTML = 'intersecting face: ' +intersects[0].face.materialIndex;
+        window.materialIndex = intersects[0].face.materialIndex;
+        console.log(images[window,materialIndex]);
+         document.getElementById('image-preview').src =  images[window,materialIndex];
+    }
+
+}, false );
+
+
+function changeFaceMaterial(x){
+    texture = texloader.load(
+			x||'img/one.jpg'
+		);
+	var newMaterial = new THREE.MeshPhongMaterial(  {map: texture});
+
+	if(materialIndex){
+    images[materialIndex] = x; 
+	meshFaceMaterial.materials[materialIndex] =  newMaterial;		
+	}
+}
+
+function render() {
+
+    mesh.rotation.y += 0.01;
+    
+    renderer.render( scene, camera );
+
+}
+
+(function animate() {
+	controls.update();
+    requestAnimationFrame( animate );
+
+    render();
+
+})();
+
+
+		</script>
+
+	</body>
+</html>
