@@ -77,7 +77,7 @@ document.body.appendChild( info );
 container = document.getElementById( 'canvas' );
 document.body.appendChild( container );
 
-renderer = new THREE.CanvasRenderer();
+renderer = new THREE.CanvasRenderer({ alpha: true });
 renderer.setSize( CANVAS_WIDTH, CANVAS_HEIGHT );
 container.appendChild( renderer.domElement );
 
