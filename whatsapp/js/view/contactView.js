@@ -1,3 +1,4 @@
+var app = {};
 var ContactView = Backbone.View.extend({
 	tagName:"li",
 
@@ -9,7 +10,11 @@ var ContactView = Backbone.View.extend({
     // "click .destroy":"clear"
 	},
     open:function(){
-    	alert(this.model.get('name'));
+        app.id = this.model.id;
+        app.receiver = this.model.get('name');
+        chatlist.fetch();
+        $('#form-area').show();
+        var x =new ChatList({collection:chatlist});
     },
 	render:function(){
 		this.$el.html(this.template(this.model.toJSON()));
