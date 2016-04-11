@@ -38,8 +38,8 @@
 	<img height="50" width="50" src="img/eight.jpg" onclick="changeFaceMaterial(this.src)">
 	<img height="50" width="50" src="img/nine.jpg" onclick="changeFaceMaterial(this.src)">
         </div>
-        <div id="preview">  
-         <img id="image-preview" src="">      	
+        <div id="preview">
+         <img id="image-preview" src="">
         </div>
 		<script src="./threejs/build/three.min.js"></script>
 
@@ -50,13 +50,13 @@
 		<script src="./js/lib/TrackballControls.js"></script>
 
 		<script>
-          
-	var images	 = ['img/one.jpg','img/two.jpg','img/three.jpg','img/four.jpg','img/five.jpg','img/six.jpg'],intersects=[];		
+
+	var images	 = ['img/one.jpg','img/two.jpg','img/three.jpg','img/four.jpg','img/five.jpg','img/six.jpg'],intersects=[];
 	var container, camera, scene, renderer, mesh,
 
     mouse = { x: 0, y: 0 },
     objects = [],
-    
+
     count = 0,
 
     CANVAS_WIDTH = 450,
@@ -87,7 +87,7 @@ container.appendChild( renderer.domElement );
 		camera.position.y = 150;
 		camera.position.z = 500;
 		camera.lookAt( scene.position );
-		
+
 
 
          texloader = new THREE.TextureLoader();
@@ -96,10 +96,10 @@ container.appendChild( renderer.domElement );
 		 );
          tex2 = texloader.load(
 			'img/two.jpg'
-		 ); 
+		 );
 		 tex3 = texloader.load(
 			'img/three.jpg'
-		 );         
+		 );
 		 tex4 = texloader.load(
 			'img/four.jpg'
 		 );
@@ -107,7 +107,7 @@ container.appendChild( renderer.domElement );
 			'img/five.jpg'
 		 );
 		 tex6 = texloader.load(
-			'img/six.jpg' 
+			'img/six.jpg'
 		 );
 
 		var material1 = new THREE.MeshPhongMaterial(  {
@@ -123,12 +123,12 @@ container.appendChild( renderer.domElement );
 		var material6 = new THREE.MeshPhongMaterial(  {
 			map: tex6});
 
-		materials = [material1, material2, material3, material4, material5, material6];		
+		materials = [material1, material2, material3, material4, material5, material6];
 
 	 	meshFaceMaterial = new THREE.MeshFaceMaterial( materials );
 				var geometry = new THREE.BoxGeometry( 200, 200, 200 );
 
-				mesh = new THREE.Mesh( geometry, meshFaceMaterial );     
+				mesh = new THREE.Mesh( geometry, meshFaceMaterial );
 				 var controls = new THREE.OrbitControls( camera ,renderer.domElement );
 				 controls.minDistance = 400;
 				scene.add( mesh );
@@ -140,7 +140,7 @@ var raycaster = new THREE.Raycaster();
 
 // mouse listener
 document.addEventListener( 'mousedown', function( event ) {
-    
+
     // For the following method to work correctly, set the canvas position *static*; margin > 0 and padding > 0 are OK
     mouse.x = ( ( event.clientX - renderer.domElement.offsetLeft ) / renderer.domElement.width ) * 2 - 1;
     mouse.y = - ( ( event.clientY - renderer.domElement.offsetTop ) / renderer.domElement.height ) * 2 + 1;
@@ -152,7 +152,7 @@ document.addEventListener( 'mousedown', function( event ) {
 
     intersects = raycaster.intersectObjects( objects );
 
-    if ( intersects.length > 0 ) {    
+    if ( intersects.length > 0 ) {
         info.innerHTML = 'intersecting face: ' +intersects[0].face.materialIndex;
         window.materialIndex = intersects[0].face.materialIndex;
     }
@@ -171,7 +171,7 @@ document.addEventListener( 'dblclick', function( event ) {
 
     intersects = raycaster.intersectObjects( objects );
 
-    if ( intersects.length > 0 ) {    
+    if ( intersects.length > 0 ) {
         info.innerHTML = 'intersecting face: ' +intersects[0].face.materialIndex;
         // window.materialIndex = intersects[0].face.materialIndex;
         console.log(images[window,materialIndex]);
@@ -187,15 +187,16 @@ function changeFaceMaterial(x){
 	var newMaterial = new THREE.MeshPhongMaterial(  {map: texture});
 	if(materialIndex!=undefined){
 		console.log("materialIndex");
-    images[materialIndex] = x; 
-	meshFaceMaterial.materials[materialIndex] =  newMaterial;		
+    images[materialIndex] = x;
+	meshFaceMaterial.materials[materialIndex] =  newMaterial;
 	}
 }
 
 function render() {
 
-    // mesh.rotation.y += 0.01;
-    
+    mesh.rotation.y += 0.01;
+    mesh.rotation.x += 0.01;
+
     renderer.render( scene, camera );
 
 }
